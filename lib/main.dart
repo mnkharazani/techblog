@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+   WidgetsFlutterBinding.ensureInitialized();
+   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top], );
+ 
   runApp(const MyApp());
+   FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {
@@ -24,6 +32,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -51,7 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     
-    return Text("");
+    return Scaffold(
+      backgroundColor: Colors.yellow,
+      body: Center(
+        child: Text("سلام به همگی"),
+      ),
+    );
     
   }
    }
