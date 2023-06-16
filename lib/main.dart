@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-   WidgetsFlutterBinding.ensureInitialized();
-   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top], );
- 
+  
+   
   runApp(const MyApp());
-   FlutterNativeSplash.remove();
+
 }
 
 class MyApp extends StatelessWidget {
@@ -19,18 +15,44 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('fa'), // farsi
+      ],
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+     theme: ThemeData(
+       
+        textTheme: const TextTheme(
+            displayLarge: TextStyle(
+                fontFamily: "Shabnam",
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: Colors.black),
+            displayMedium: TextStyle(
+                fontFamily: "Shabnam",
+                fontSize: 13,
+                fontWeight: FontWeight.w300,
+                color: Colors.black),
+            headlineMedium: TextStyle(
+                fontFamily: "Shabnam",
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+                color: Colors.white),
+            headlineSmall: TextStyle(
+                fontFamily: "Shabnam",
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+                color: Colors.red),
+            headlineLarge: TextStyle(
+                fontFamily: "Shabnam",
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+                color: Colors.green),
+      )
       ),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -63,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.yellow,
       body: Center(
-        child: Text("سلام به همگی"),
+        child: Image.asset("assets/images/icon.png"),
+         //Text("سلام به همگی",style: Theme.of(context).textTheme.displayLarge,),
       ),
     );
     
