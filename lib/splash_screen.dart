@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -20,9 +21,10 @@ double screenHeight=0;
 @override
   void initState() {
     Future.delayed(Duration(seconds: 5)).then((value) {
-      Navigator.push(context,MaterialPageRoute(builder: (context) => home(),) );
-
-    });
+      Navigator.pushReplacement(context,
+      //MaterialPageRoute(builder: (context) => home(),) );
+       CupertinoPageRoute(builder: (context) => home(),) );
+    }); 
 
     super.initState();
   }
